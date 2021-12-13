@@ -7,6 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = {Email.class},version  = 2)
+/**
+ * Permet instancier une connexion à la base de donnée
+ */
 public abstract class AppDataBase extends RoomDatabase
 {
         private static final String DATABASE_NAME = "Imail";

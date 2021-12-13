@@ -23,6 +23,7 @@ public class ReadEmail extends AppCompatActivity {
         TextView objet = findViewById(R.id.read_email_titre);
         TextView contenu = findViewById(R.id.read_email_message);
 
+        // On initalise les textes avec les extra saisis dans la classe EmailAdapter
         destinataire.setText(intent.getStringExtra("Destinataire"));
         objet.setText(intent.getStringExtra("Titre"));
         contenu.setText(intent.getStringExtra("Contenu"));

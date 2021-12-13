@@ -50,17 +50,22 @@ public class CreateEmail extends AppCompatActivity {
             }
         });
 
+        // Bouton lié à la saisie vocale du titre du mail
         saisieVocaleTitre.setOnClickListener(view -> {
             edittextChoix = "Titre";
             syntheseVocale();
         });
-
+        // bouton lié à la saisie vocale du contenu du mail
         saisieVocaleContent.setOnClickListener(view -> {
             edittextChoix = "Content";
             syntheseVocale();
         });
     }
 
+    /**
+     * syntheseVocale permet d'intialiser l'intent qui gere l'affichage lié à la saisie vocale de google
+     * elle fait appel startActivity for result qui va recuperer le texte dicté.
+     */
     public void syntheseVocale(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(
@@ -76,6 +81,10 @@ public class CreateEmail extends AppCompatActivity {
 
     }
 
+    /**
+     * setTexte est une fonction qui permet d'identifier quel zone de texte doit etre modifiée lors de la fonction saisieVocale
+     * la valeur edittextChoix est initialisée au moment ou on appui sur un des deux boutons de la saisie vocale
+     */
     public void setTexte(){
         if(edittextChoix == "Titre"){
             titre.setText(texte);
@@ -97,7 +106,15 @@ public class CreateEmail extends AppCompatActivity {
         }
     }
 
-    private void saveNewEmail(String titre , String destinataire , String contenue)
+    /**
+     * saveNewEmail permet d'enregistrer un email dans la base de donnée
+     * elle verifie cependant que l'ensemble des adresse mail saisie respectent un paterne correspondant aux adresse mail actuelle
+     * @param titre titre du mail
+     * @param destinataire destinataires du mail
+     * @param contenu contenu du mail
+     */
+
+    private void saveNewEmail(String titre , String destinataire , String contenu)
     {
         boolean emailValide = true;
         String[] listeEmail = destinataire.split(",");
@@ -111,10 +128,10 @@ public class CreateEmail extends AppCompatActivity {
         }
 
         if(emailValide) {
-            AppDataBase db = AppDataBase.getDbInstance(this.getApplicationContext());
+            AppDataBase db = AppDataBase.getDbInstance(this.getApplicationContext()); // initialisation de la connexion à la base de donnée
             Email email = new Email();
             email.Destinataire = destinataire;
-            email.Content = contenue;
+            email.Content = contenu;
             email.Object = titre;
             db.emailDAO().insertEmail(email);
             startActivity(new Intent(this, MainActivity.class));

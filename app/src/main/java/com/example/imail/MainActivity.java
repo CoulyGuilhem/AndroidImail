@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         EmailAdapter adapter = new EmailAdapter(emails);
         recyclerEmail.setAdapter(adapter);
         recyclerEmail.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        /**
+         * Permet de faire appel a la fonction onTextChanged afin d'actualiser la barre de recherche à chaque caracteres saisis
+         */
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -60,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         searchBarVocal.setOnClickListener(v -> syntheseVocale());
     }
 
+    /**
+     * Permet de recuperer les mails sauvegardés dans la base de donnée
+     * @return
+     */
 
     private ArrayList<Email> loadEmailList()
     {
@@ -68,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
         return (ArrayList<Email>) emailDao.getAllEmail();
     }
 
+    /**
+     * searchBar est l'algorythme permetant de garder que les mails ayant le contenu de la barre de recherche dans leur titre
+     */
+
     public void searchBar(){
         EditText searchBar = findViewById(R.id.liste_imail_search_edittext);
         String pattern = searchBar.getText().toString();
@@ -75,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerEmail = findViewById(R.id.liste_imail_recyclerView);
 
         ArrayList<Email> emailsMatchs = new ArrayList<>();
-        System.out.println("###############################################");
         for(int i = 0; i < emails.size();i++){
             if(emails.get(i).Object.contains(pattern)){
                 if(emailsMatchs.size() == 0){
@@ -90,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerEmail.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }
 
+
+    /**
+     * syntheseVocale permet d'intialiser l'intent qui gere l'affichage lié à la saisie vocale de google
+     * elle fait appel startActivity for result qui va recuperer le texte dicté.
+     */
     public void syntheseVocale(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(

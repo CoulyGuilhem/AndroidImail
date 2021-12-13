@@ -35,6 +35,10 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.ViewHolder>{
         return viewHolder;
     }
 
+
+    /**
+     * Permet d'attribuer des fonctions ainsi que des valeurs pour chaque widget de chaque cellules
+     */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final String titre = mail.get(position).Object;
@@ -62,6 +66,10 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.ViewHolder>{
     public int getItemCount() {
         return mail.size();
     }
+
+    /**
+     * Permet d'intialiser tous les widget
+     */
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView titre;
