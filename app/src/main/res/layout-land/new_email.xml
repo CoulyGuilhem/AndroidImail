@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_draawable">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_email_destinataire_layout"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/new_email_titre_layout">
+
+        <EditText
+            android:id="@+id/new_email_destinataire_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Adresse mail (separée par une virgule)"
+            android:textColor="#ff1aff"
+            android:background="@drawable/border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/addNewEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="10dp" />
+
+        <ImageButton
+            android:id="@+id/addNewEmail"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/send_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_email_titre_layout"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_email_destinataire_layout">
+
+        <EditText
+            android:id="@+id/new_email_titre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Titre du mail"
+            android:textColor="#ff1aff"
+            android:layout_marginRight="10dp"
+            android:maxLength="40"
+            android:background="@drawable/border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/new_email_titre_vocal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/new_email_titre_vocal"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/mic_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/new_email_message"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:textColor="#ff1aff"
+        android:gravity="top"
+        android:background="#88999999"
+        android:hint="Contenu du message..."
+        app:layout_constraintBottom_toTopOf="@id/new_email_message_vocal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_email_titre_layout" />
+
+    <ImageButton
+        android:id="@+id/new_email_message_vocal"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/mic_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_email_message" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
